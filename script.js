@@ -1,27 +1,29 @@
 //------> Declaring DOM Refs and Consts
+//array story links
+
+//array of rapper images that will be pushed within a function
+let links = 
+['https://placekitten.com/278/181',
+'https://placekitten.com/278/181',
+'https://placekitten.com/278/181',
+'https://placekitten.com/278/181',]
 
 
-function image () {
-    let img = document.createElement('img');
-    let allBoxes = document.getElementsByClassName('img')
-    let randomBox = allBoxes[Math.floor(Math.random() * 9)]
+//isolating
+let allCards = document.getElementsByClassName('card')
+
+function flipCards (e) {
+    console.log(e);
+    let card = document.createElement('img');
+        
+
+    let randomImg = links[Math.floor(Math.random() * 5)]
+    e.target.src = randomImg;
 }
 
 
 
-
-//should assign random
-//on click, the card should turn over and have an img
-// should stay open and allow you to 
-// init function should clear game, assign pics randomly, 
-
-// document.getElementById('nameInput').addEventListener('submit', e => {
-//     e.preventDefault();
-//     console.log('hi!')
-
-// })
-
-// //this will go in the init function
-// const imgAssign = () => {
-// }
+for (var i = 0; i < allCards.length; i++) {
+    allCards[i].addEventListener('click', flipCards)
+}
 
