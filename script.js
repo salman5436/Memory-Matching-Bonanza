@@ -52,16 +52,8 @@ let card8 = document.getElementById('07')
 
 // //This loop iterates through the div elements on my game board and adds an event listener with the function flipCards (above)
 // for (var i = 0; i < allCards.length; i++) {
-//     allCards[i].addEventListener('click', flipCards)
-    
-   
+//     allCards[i].addEventListener('click', flipCards)   
 // }
-
-//How can I ensure
-// Check for a match based on url
-function swapImg () {
-    
-}
 
 
 function storeImg () {
