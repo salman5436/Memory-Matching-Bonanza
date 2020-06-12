@@ -21,7 +21,8 @@ const player = {
 
 //this var represents an array of the elements in my HTML with the class card, meaning the img divs on my game board
 let allCards = document.getElementsByClassName('card');
-let startBtn = document.getElementById('start-button')
+let startBtn = document.getElementById('start-button');
+let topLeftCard = document.getElementById('00');
 
 
 //--------------------> Game Logic Functions <------------------------
@@ -61,17 +62,34 @@ function shuffle (array) {
     return gameArr;
 }
 
-let imagesCount = 0; 
+let gameCounter = 1;
 
 function flipCard (e) {
    //this function will have an event parameter that will allow for the click function to 
    //target a specific div
    // e will give me access to which card was picked    
     // create the tracker that increments the index each time 
+    console.log(e.target.src);
+     // e.target.src = imageStorage[parseInt(e.target.id)];
 
-    e.target.src = imageStorage[imagesCount];
-    imagesCount++;
+    
+     if (gameCounter === 0) {
+        gameCounter++
+    } else if (gameCounter === 1) {
+        e.target.src = imageStorage[parseInt(e.target.id)];
+        this.classList.add("flippedClass")
+        gameCounter++;
+    } else if (gameCounter === 2) {
+        e.target.src = imageStorage[parseInt(e.target.id)];
+        this.classList.add('flippedClass')
+        gameCounter = 0;
+    } else {
+       this.classList.remove("flippedClass")
+    }
 
+    //have the ability to select two elements and give class of selected and then check 
+    //the source... increment counter every time the card is flipped
+    //
 
 }
 
@@ -83,10 +101,24 @@ function assignEvents () {
     }
 }
 
+// BEFORE MATCHING CARDS, I SHOULD LIMIT THE AMOUNT OF CLICKS TO 2
+// function matchCards(array) {
+//    // this function will check if the divs that are clicked will be a match
+//    // if e.target.id
+//    // Do I need match variables?
+//    // How do I check the links that 
+//    let checkMatchArr = array.map(findMatch)
+    
+//    function findMatch (element) {
+//        if(element.src === dfsd)
+//    }
+// }
+
 function gameStart(e) {
     e.preventDefault();
     imageStorage = shuffle(links);
     assignEvents()
+    // matchCards()
 }
 
 startBtn.addEventListener('click', gameStart);
@@ -128,3 +160,9 @@ startBtn.addEventListener('click', gameStart);
 //         allCards[i].addEventListener('click', flipCards)   
 //     }
 // }
+
+// change class when clicked
+// limit the amount of clicks is 2
+// check match then see
+
+// after each condition (after every 2 clicks, clikc counter is 0)
