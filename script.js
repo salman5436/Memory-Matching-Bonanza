@@ -5,10 +5,10 @@
 let links = 
 ['https://placekitten.com/278/181',
 'https://placekitten.com/278/181',
-'https://picsum.photos/id/237/278/181',
-'https://picsum.photos/id/237/278/181',
-'https://picsum.photos/278/181',
-'https://picsum.photos/278/181',
+'https://www.placecage.com/278/181',
+'https://www.placecage.com/278/181',
+'https://www.placecage.com/c/278/181',
+'https://www.placecage.com/c/278/181',
 'https://www.placecage.com/278/181',
 'https://www.placecage.com/278/181']
 
@@ -40,24 +40,38 @@ let startBtn = document.getElementById('start-button')
 // setup your code so atGameStart() is called when `new game` button on game board is clicked
 
 let imageStorage = [];
+let tracker = []
 
 function shuffle (array) {
     let gameArr = [];
-    for (var i = 0; i < array.length; i++) {
-        gameArr.push(array[Math.floor(Math.random() * 9)])
+    //while loop, while the game Arr length is not yet 8, choose an index to select from the array 
+    // is this an element we have already chosen? If we have, put it back
+    // index tracker to see if the index is selected
+    // if it not selected, add that index into my tracker
+    // Since my array does not have unique values, I need to use the tracker index
+    while (gameArr.length < 8) {
+        let index = Math.floor(Math.random() * array.length);
+        if (!tracker.includes(index)) {
+            gameArr.push(array[index])
+            tracker.push(index)
+        }
         // console.log(gameArr);
+        // tracker that asks whether that index has been selected already 
     }
-    return gameArr
+    return gameArr;
 }
+
+let imagesCount = 0; 
 
 function flipCard (e) {
    //this function will have an event parameter that will allow for the click function to 
    //target a specific div
-   // e will give me access to which card was picked
+   // e will give me access to which card was picked    
+    // create the tracker that increments the index each time 
 
-    //e.target.src = imageStorage[0];
-   e.target.src = imageStorage[1];
-   
+    e.target.src = imageStorage[imagesCount];
+    imagesCount++;
+
 
 }
 
