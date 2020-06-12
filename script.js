@@ -27,25 +27,7 @@ let startBtn = document.getElementById('start-button')
 //--------------------> Game Logic Functions <------------------------
 
 
-// This function is a callBack Function that is called when adding the event listener in the loop for the AllCards array
-// function flipCards (e) {
-//      //changed image versus default image
-//      // if div id at img is the same as default image, do THIS
-//     console.log(e);
-        
-//     // Using this var, 
-//     let randomImg = links[Math.floor(Math.random() * 5)]
-//     e.target.src = randomImg;
-//     hasFlipped = true;
-// }
 
-
-// //This loop iterates through the div elements on my game board and adds an event listener with the function flipCards (above)
-// function cardSetter () {
-//     for (var i = 0; i < allCards.length; i++) {
-//         allCards[i].addEventListener('click', flipCards)   
-//     }
-// }
 
 // declare a function shuffle()
 // this function should take an array
@@ -72,8 +54,11 @@ function flipCard (e) {
    //this function will have an event parameter that will allow for the click function to 
    //target a specific div
    // e will give me access to which card was picked
-   e.target.src = imageStorage[0];
-  
+
+    //e.target.src = imageStorage[0];
+   e.target.src = imageStorage[1];
+   
+
 }
 
 function assignEvents () {
@@ -83,7 +68,6 @@ function assignEvents () {
         allCards[i].addEventListener('click', flipCard)
     }
 }
-
 
 function gameStart(e) {
     e.preventDefault();
@@ -109,4 +93,24 @@ startBtn.addEventListener('click', gameStart);
 // 1: Base on a match system that forces cards to flip back if not matched
 // 2: Counter system through a loop that resets to 0 after 2 turns
 
+//<------------------- ARCHIVED FUNCTIONS <-----------------------------------------
 
+// This function is a callBack Function that is called when adding the event listener in the loop for the AllCards array
+// function flipCards (e) {
+//      //changed image versus default image
+//      // if div id at img is the same as default image, do THIS
+//     console.log(e);
+        
+//     // Using this var, 
+//     let randomImg = links[Math.floor(Math.random() * 5)]
+//     e.target.src = randomImg;
+//     hasFlipped = true;
+// }
+
+
+// //This loop iterates through the div elements on my game board and adds an event listener with the function flipCards (above)
+// function cardSetter () {
+//     for (var i = 0; i < allCards.length; i++) {
+//         allCards[i].addEventListener('click', flipCards)   
+//     }
+// }
