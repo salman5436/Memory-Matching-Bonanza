@@ -4,8 +4,12 @@
 //array of rapper images that will be pushed within a function
 let links = 
 ['https://placekitten.com/278/181',
+'https://placekitten.com/278/181',
+'https://picsum.photos/id/237/278/181',
 'https://picsum.photos/id/237/278/181',
 'https://picsum.photos/278/181',
+'https://picsum.photos/278/181',
+'https://www.placecage.com/278/181',
 'https://www.placecage.com/278/181']
 
 const player = {
@@ -16,16 +20,8 @@ const player = {
 
 
 //this var represents an array of the elements in my HTML with the class card, meaning the img divs on my game board
-let allCards = document.getElementsByClassName('card')
-
-let card1 = document.getElementById('00')
-let card2 = document.getElementById('01')
-let card3 = document.getElementById('02')
-let card4 = document.getElementById('03')
-let card5 = document.getElementById('04')
-let card6 = document.getElementById('05')
-let card7 = document.getElementById('06')
-let card8 = document.getElementById('07')
+let allCards = document.getElementsByClassName('card');
+let startBtn = document.getElementById('start-button')
 
 
 //--------------------> Game Logic Functions <------------------------
@@ -35,13 +31,7 @@ let card8 = document.getElementById('07')
 // function flipCards (e) {
 //      //changed image versus default image
 //      // if div id at img is the same as default image, do THIS
-//      if () {
-
-//     }
-    
 //     console.log(e);
-//     //card is the creation of a new img element where links[url] will go
-//     let card = document.createElement('img');
         
 //     // Using this var, 
 //     let randomImg = links[Math.floor(Math.random() * 5)]
@@ -51,39 +41,59 @@ let card8 = document.getElementById('07')
 
 
 // //This loop iterates through the div elements on my game board and adds an event listener with the function flipCards (above)
-// for (var i = 0; i < allCards.length; i++) {
-//     allCards[i].addEventListener('click', flipCards)   
+// function cardSetter () {
+//     for (var i = 0; i < allCards.length; i++) {
+//         allCards[i].addEventListener('click', flipCards)   
+//     }
 // }
 
+// declare a function shuffle()
+// this function should take an array
+// and return that array in a shuffled order (google this, you will find a ton of solves to help you on this)
+// declare an atGameStart() function
+// this function should take an array of images
+// call shuffle() on that array of images
+// return this new, shuffled array, and use as your gameboard array of images *****
+// 
+// setup your code so atGameStart() is called when `new game` button on game board is clicked
 
-function storeImg () {
-    card1.addEventListener('click', function () {
-        card1.src = 'https://placekitten.com/278/181'
-    })
-    card2.addEventListener('click', function () {
-        card2.src = 'https://picsum.photos/id/237/278/181'
-    })
-    card3.addEventListener('click', function () {
-        card3.src = 'https://picsum.photos/278/181'
-    })
-    card4.addEventListener('click', function () {
-        card4.src = 'https://placekitten.com/278/181'
-    })
-    card5.addEventListener('click', function () {
-        card5.src = 'https://picsum.photos/id/237/278/181'
-    })
-    card6.addEventListener('click', function () {
-        card6.src = 'https://placekitten.com/278/181'
-    })
-    card7.addEventListener('click', function () {
-        card7.src = 'https://www.placecage.com/278/181'
-    })
-    card8.addEventListener('click', function () {
-        card8.src = 'https://placekitten.com/278/181'
-    }) 
+let imageStorage = [];
+
+function shuffle (array) {
+    let gameArr = [];
+    for (var i = 0; i < array.length; i++) {
+        gameArr.push(array[Math.floor(Math.random() * 9)])
+        // console.log(gameArr);
+    }
+    return gameArr
 }
 
-storeImg();
+function flipCard (e) {
+   //this function will have an event parameter that will allow for the click function to 
+   //target a specific div
+   // e will give me access to which card was picked
+   e.target.src = imageStorage[0];
+  
+}
+
+function assignEvents () {
+    //assign a click function for each of the divs-indexes within the allCards arr
+    // Iterate through the array 
+    for(var i = 0; i < allCards.length; i++){
+        allCards[i].addEventListener('click', flipCard)
+    }
+}
+
+
+function gameStart(e) {
+    e.preventDefault();
+    imageStorage = shuffle(links);
+    assignEvents()
+}
+
+startBtn.addEventListener('click', gameStart);
+
+
 
 //init start function will clear the board and do the flipCard function and start the game
 //game logic: win condition must be established
@@ -98,3 +108,5 @@ storeImg();
 
 // 1: Base on a match system that forces cards to flip back if not matched
 // 2: Counter system through a loop that resets to 0 after 2 turns
+
+
