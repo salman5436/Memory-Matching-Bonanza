@@ -62,7 +62,7 @@ function shuffle (array) {
     return gameArr;
 }
 
-let gameCounter = 1;
+let flippedCardsArr = []
 
 function flipCard (e) {
    //this function will have an event parameter that will allow for the click function to 
@@ -72,26 +72,31 @@ function flipCard (e) {
     console.log(e.target.src);
      // e.target.src = imageStorage[parseInt(e.target.id)];
 
-    
-     if (gameCounter === 0) {
-        gameCounter++
-    } else if (gameCounter === 1) {
-        e.target.src = imageStorage[parseInt(e.target.id)];
-        this.classList.add("flippedClass")
-        gameCounter++;
-    } else if (gameCounter === 2) {
-        e.target.src = imageStorage[parseInt(e.target.id)];
-        this.classList.add('flippedClass')
-        gameCounter = 0;
-    } else {
-       this.classList.remove("flippedClass")
-    }
+     e.target.src = imageStorage[parseInt(e.target.id)];
+     flippedCardsArr.push(e.target.src)
+     this.classList.add("flippedClass")
+     if (flippedCardsArr.length === 2) {
+        if(flippedCardsArr[0] === flippedCardsArr[1]) {
+            // points++
+        } else {
+            let restoreImages = document.getElementsByClassName('flippedClass');
+            console.log(restoreImages);
+            Array.from(restoreImages).forEach(element => {
+                element.children[0].src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRaZPqedlhttgZUQTvRJuIz1lFhs1d8uetmL1S8A6w5F9ToSt_h&usqp=CAU"
+            })
+        }
+        let restoreImages = document.getElementsByClassName('flippedClass');
+        Array.from(restoreImages).forEach(element => {
+            element.classList.remove('flippedClass')
+        })
+        flippedCardsArr = [];
+    }        
+}
+
 
     //have the ability to select two elements and give class of selected and then check 
     //the source... increment counter every time the card is flipped
     //
-
-}
 
 function assignEvents () {
     //assign a click function for each of the divs-indexes within the allCards arr
