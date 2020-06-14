@@ -69,6 +69,8 @@ function flipCard (e) {
    //target a specific div
    // e will give me access to which card was picked    
     // create the tracker that increments the index each time 
+    // SET Timeout function 
+
     console.log(e.target.src);
      // e.target.src = imageStorage[parseInt(e.target.id)];
 
@@ -76,21 +78,27 @@ function flipCard (e) {
      flippedCardsArr.push(e.target.src)
      this.classList.add("flippedClass")
      if (flippedCardsArr.length === 2) {
-        if(flippedCardsArr[0] === flippedCardsArr[1]) {
-            // points++
-        } else {
+        function delayFlip() {
+            if(flippedCardsArr[0] === flippedCardsArr[1]) {
+                player.points++
+            } else {
+                let restoreImages = document.getElementsByClassName('flippedClass');
+                console.log(restoreImages);
+                Array.from(restoreImages).forEach(element => {
+                    element.children[0].src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRaZPqedlhttgZUQTvRJuIz1lFhs1d8uetmL1S8A6w5F9ToSt_h&usqp=CAU"
+                })
+            }
             let restoreImages = document.getElementsByClassName('flippedClass');
-            console.log(restoreImages);
             Array.from(restoreImages).forEach(element => {
-                element.children[0].src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRaZPqedlhttgZUQTvRJuIz1lFhs1d8uetmL1S8A6w5F9ToSt_h&usqp=CAU"
+                element.classList.remove('flippedClass')
             })
+            flippedCardsArr = [];
         }
-        let restoreImages = document.getElementsByClassName('flippedClass');
-        Array.from(restoreImages).forEach(element => {
-            element.classList.remove('flippedClass')
-        })
-        flippedCardsArr = [];
-    }        
+        setInterval(delayFlip, 2500);
+        //Still have to change the placement of the delayFlip function
+        //So that the first flip doesn't turn back and we can wait till the second flip
+        // BUT this almost makes the whole game on hard mode, forcing you to really pay attention
+    }
 }
 
 
@@ -123,7 +131,6 @@ function gameStart(e) {
     e.preventDefault();
     imageStorage = shuffle(links);
     assignEvents()
-    // matchCards()
 }
 
 startBtn.addEventListener('click', gameStart);

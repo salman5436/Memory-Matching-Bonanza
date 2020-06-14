@@ -30,3 +30,25 @@ body {
 
 }
 
+#name label {
+    font-size: 30px;
+    
+}
+
+#name {
+    font-size: 25px;
+}
+
+#result {
+    justify-content: space-between;
+}
+
+#time {
+    display: inline-flex;
+    align-content: flex-start;
+}
+
+#points {
+    display:inline-flex;
+    align-content: flex-end;
+}
