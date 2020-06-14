@@ -62,7 +62,13 @@ function shuffle (array) {
     return gameArr;
 }
 
-let flippedCardsArr = []
+let flippedCardsArr = [];
+
+function pointsDisplay() {
+   let pointsPlacement = document.createElement('p');
+   pointsPlacement.textContent = player.points;
+   document.getElementById('points').append(pointsPlacement);
+}
 
 function flipCard (e) {
    //this function will have an event parameter that will allow for the click function to 
@@ -80,7 +86,11 @@ function flipCard (e) {
      if (flippedCardsArr.length === 2) {
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
+                //BUG: This increments every time it checks instead of once per match..
                 player.points++
+                console.log(player.points);
+                //This function creates a p element in the points div and appends the score
+                pointsDisplay();
             } else {
                 let restoreImages = document.getElementsByClassName('flippedClass');
                 console.log(restoreImages);
@@ -101,11 +111,6 @@ function flipCard (e) {
     }
 }
 
-
-    //have the ability to select two elements and give class of selected and then check 
-    //the source... increment counter every time the card is flipped
-    //
-
 function assignEvents () {
     //assign a click function for each of the divs-indexes within the allCards arr
     // Iterate through the array 
@@ -114,23 +119,11 @@ function assignEvents () {
     }
 }
 
-// BEFORE MATCHING CARDS, I SHOULD LIMIT THE AMOUNT OF CLICKS TO 2
-// function matchCards(array) {
-//    // this function will check if the divs that are clicked will be a match
-//    // if e.target.id
-//    // Do I need match variables?
-//    // How do I check the links that 
-//    let checkMatchArr = array.map(findMatch)
-    
-//    function findMatch (element) {
-//        if(element.src === dfsd)
-//    }
-// }
-
 function gameStart(e) {
     e.preventDefault();
     imageStorage = shuffle(links);
-    assignEvents()
+    assignEvents();
+
 }
 
 startBtn.addEventListener('click', gameStart);
@@ -178,3 +171,16 @@ startBtn.addEventListener('click', gameStart);
 // check match then see
 
 // after each condition (after every 2 clicks, clikc counter is 0)
+
+// BEFORE MATCHING CARDS, I SHOULD LIMIT THE AMOUNT OF CLICKS TO 2
+// function matchCards(array) {
+//    // this function will check if the divs that are clicked will be a match
+//    // if e.target.id
+//    // Do I need match variables?
+//    // How do I check the links that 
+//    let checkMatchArr = array.map(findMatch)
+    
+//    function findMatch (element) {
+//        if(element.src === dfsd)
+//    }
+// }

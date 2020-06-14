@@ -40,7 +40,9 @@ body {
 }
 
 #result {
-    justify-content: space-between;
+    display: inline;
+    justify-content: space-around;
+    font-size: 20px;
 }
 
 #time {
@@ -51,4 +53,6 @@ body {
 #points {
     display:inline-flex;
     align-content: flex-end;
+    padding-right: 50px;
+
 }
