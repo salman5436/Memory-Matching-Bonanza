@@ -3,14 +3,14 @@
 
 //array of rapper images that will be pushed within a function
 let links = 
-['https://placekitten.com/278/181',
-'https://placekitten.com/278/181',
-'https://www.placecage.com/278/181',
-'https://www.placecage.com/278/181',
-'https://www.placecage.com/c/278/181',
-'https://www.placecage.com/c/278/181',
-'https://www.placecage.com/278/181',
-'https://www.placecage.com/278/181']
+['Images/Drake.jpg',
+'Images/Drake.jpg',
+'Images/Kanye.jpg',
+'Images/Kanye.jpg',
+'Images/Tupac.png',
+'Images/Tupac.png',
+'Images/Tyler.jpg',
+'Images/Tyler.jpg']
 
 const player = {
     points: 0,
