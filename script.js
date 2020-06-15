@@ -24,6 +24,12 @@ let allCards = document.getElementsByClassName('card');
 let startBtn = document.getElementById('start-button');
 let topLeftCard = document.getElementById('00');
 
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Form submit in the modal
+var submitBtn = document.getElementById("btn");
+
 
 //--------------------> Game Logic Functions <------------------------
 
@@ -45,7 +51,7 @@ let tracker = []
 
 function shuffle (array) {
     let gameArr = [];
-    //while loop, while the game Arr length is not yet 8, choose an index to select from the array 
+    //while loop, while the game Arr length is not yet 8, choose an index to select from the links array 
     // is this an element we have already chosen? If we have, put it back
     // index tracker to see if the index is selected
     // if it not selected, add that index into my tracker
@@ -71,6 +77,19 @@ function pointsDisplay() {
    document.getElementById('points').innerHTML = pointsPlacement;
 }
 
+function modalAdd () {
+        modal.style.display = "block";
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+        }
+}
+
 function flipCard (e) {
    //this function will have an event parameter that will allow for the click function to 
    //target a specific div
@@ -84,12 +103,13 @@ function flipCard (e) {
      e.target.src = imageStorage[parseInt(e.target.id)];
      flippedCardsArr.push(e.target.src)
      this.classList.add("flippedClass")
-     if (flippedCardsArr.length === 2) {
-        
+
+     if (flippedCardsArr.length === 2) { 
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
                 //BUG: This increments every time it checks instead of once per match..
                     player.points++
+                    modalAdd()
                 pointsDisplay();
                 console.log(player.points);
             } else {
