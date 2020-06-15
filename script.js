@@ -66,7 +66,7 @@ let flippedCardsArr = [];
 
 function pointsDisplay() {
    let pointsPlacement = document.createElement('p');
-   pointsPlacement.textContent = player.points;
+   pointsPlacement.innerHTML = convertedPoints;
    document.getElementById('points').append(pointsPlacement);
 }
 
@@ -87,7 +87,8 @@ function flipCard (e) {
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
                 //BUG: This increments every time it checks instead of once per match..
-                player.points++
+                let convertedPoints = parseInt(player.points)
+                convertedPoints++
                 console.log(player.points);
                 //This function creates a p element in the points div and appends the score
                 pointsDisplay();
@@ -104,7 +105,7 @@ function flipCard (e) {
             })
             flippedCardsArr = [];
         }
-        setInterval(delayFlip, 2500);
+        setInterval(delayFlip, 4500);
         //Still have to change the placement of the delayFlip function
         //So that the first flip doesn't turn back and we can wait till the second flip
         // BUT this almost makes the whole game on hard mode, forcing you to really pay attention
