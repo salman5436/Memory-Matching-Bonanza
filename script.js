@@ -77,17 +77,24 @@ function pointsDisplay() {
    document.getElementById('points').innerHTML = pointsPlacement;
 }
 
-function modalAdd () {
-        modal.style.display = "block";
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none";
+function modalAdd (e) {
+    modal.style.display = "block";
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
         }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-            }
-        }
+    }
+    // submitBtn.onclick = function(value) {
+    //     value = document.getElementById('input-value').innerHTML
+    //     if (e.target.src.includes(value)) {
+    //         player.points++
+    //     }
+    // }
+
 }
 
 function flipCard (e) {
