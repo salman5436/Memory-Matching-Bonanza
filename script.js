@@ -63,6 +63,8 @@ function shuffle (array) {
 }
 
 let flippedCardsArr = [];
+let playerMatch = false;
+
 
 function pointsDisplay() {
    let pointsPlacement = player.points;
@@ -86,7 +88,11 @@ function flipCard (e) {
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
                 //BUG: This increments every time it checks instead of once per match..
-                player.points++
+                playerMatch = true;
+                if(playerMatch === true) {
+                    player.points++
+                    playerMatch = false;
+                }
                 console.log(player.points);
                 //This function creates a p element in the points div and appends the score
                 pointsDisplay();
