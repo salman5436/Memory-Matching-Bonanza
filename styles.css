@@ -133,3 +133,7 @@ body {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
   }
+
+.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+	transform: rotateY(180deg);
+}

@@ -108,6 +108,7 @@ function flipCard (e) {
      // e.target.src = imageStorage[parseInt(e.target.id)];
 
      e.target.src = imageStorage[parseInt(e.target.id)];
+     this.classList.toggle("flip")
      flippedCardsArr.push(e.target.src)
      this.classList.add("flippedClass")
 
