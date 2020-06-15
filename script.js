@@ -108,6 +108,7 @@ function flipCard (e) {
      // e.target.src = imageStorage[parseInt(e.target.id)];
 
      e.target.src = imageStorage[parseInt(e.target.id)];
+     //attempting to add flip functionality but its not working
      this.classList.toggle("flip")
      flippedCardsArr.push(e.target.src)
      this.classList.add("flippedClass")
@@ -156,60 +157,3 @@ function gameStart(e) {
 }
 
 startBtn.addEventListener('click', gameStart);
-
-
-
-//init start function will clear the board and do the flipCard function and start the game
-//game logic: win condition must be established
-// I have to disable double click and ensure that pictures stay open if they match, otherwise restore original src ** This is probably the most challenging roadblock for today
-
-//How can I map my ids to the images that are stored/replaced
-
-//HOw to prevent user to flipping more than 2 cards;
-// 2 scenarios:
-// 1 - match
-// 2 - non match
-
-// 1: Base on a match system that forces cards to flip back if not matched
-// 2: Counter system through a loop that resets to 0 after 2 turns
-
-//<------------------- ARCHIVED FUNCTIONS <-----------------------------------------
-
-// This function is a callBack Function that is called when adding the event listener in the loop for the AllCards array
-// function flipCards (e) {
-//      //changed image versus default image
-//      // if div id at img is the same as default image, do THIS
-//     console.log(e);
-        
-//     // Using this var, 
-//     let randomImg = links[Math.floor(Math.random() * 5)]
-//     e.target.src = randomImg;
-//     hasFlipped = true;
-// }
-
-
-// //This loop iterates through the div elements on my game board and adds an event listener with the function flipCards (above)
-// function cardSetter () {
-//     for (var i = 0; i < allCards.length; i++) {
-//         allCards[i].addEventListener('click', flipCards)   
-//     }
-// }
-
-// change class when clicked
-// limit the amount of clicks is 2
-// check match then see
-
-// after each condition (after every 2 clicks, clikc counter is 0)
-
-// BEFORE MATCHING CARDS, I SHOULD LIMIT THE AMOUNT OF CLICKS TO 2
-// function matchCards(array) {
-//    // this function will check if the divs that are clicked will be a match
-//    // if e.target.id
-//    // Do I need match variables?
-//    // How do I check the links that 
-//    let checkMatchArr = array.map(findMatch)
-    
-//    function findMatch (element) {
-//        if(element.src === dfsd)
-//    }
-// }
