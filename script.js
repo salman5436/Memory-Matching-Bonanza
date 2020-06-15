@@ -65,9 +65,8 @@ function shuffle (array) {
 let flippedCardsArr = [];
 
 function pointsDisplay() {
-   let pointsPlacement = document.createElement('p');
-   pointsPlacement.innerHTML = convertedPoints;
-   document.getElementById('points').append(pointsPlacement);
+   let pointsPlacement = player.points;
+   document.getElementById('points').innerHTML = pointsPlacement;
 }
 
 function flipCard (e) {
@@ -87,8 +86,7 @@ function flipCard (e) {
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
                 //BUG: This increments every time it checks instead of once per match..
-                let convertedPoints = parseInt(player.points)
-                convertedPoints++
+                player.points++
                 console.log(player.points);
                 //This function creates a p element in the points div and appends the score
                 pointsDisplay();
