@@ -63,7 +63,7 @@ function shuffle (array) {
 }
 
 let flippedCardsArr = [];
-let playerMatch = false;
+let playerMatch = true;
 
 
 function pointsDisplay() {
@@ -85,17 +85,13 @@ function flipCard (e) {
      flippedCardsArr.push(e.target.src)
      this.classList.add("flippedClass")
      if (flippedCardsArr.length === 2) {
+        
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
                 //BUG: This increments every time it checks instead of once per match..
-                playerMatch = true;
-                if(playerMatch === true) {
                     player.points++
-                    playerMatch = false;
-                }
-                console.log(player.points);
-                //This function creates a p element in the points div and appends the score
                 pointsDisplay();
+                console.log(player.points);
             } else {
                 let restoreImages = document.getElementsByClassName('flippedClass');
                 console.log(restoreImages);
@@ -109,7 +105,7 @@ function flipCard (e) {
             })
             flippedCardsArr = [];
         }
-        setInterval(delayFlip, 4500);
+        setTimeout(delayFlip, 2500);
         //Still have to change the placement of the delayFlip function
         //So that the first flip doesn't turn back and we can wait till the second flip
         // BUT this almost makes the whole game on hard mode, forcing you to really pay attention
