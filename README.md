@@ -11,16 +11,20 @@ This will be Hip Hop themed memory-based matching card game with a points system
 - HTML/CSS
 
 ## MVP Checklist: 
-- Game Board 
-- Div Images(blank or empty display)
-- Click event to turn over the Div Images
-- Check for match on click
-- Images stay open if checked
-- Point Incremented
+- Game Board  (COMPLETE)
+- Div Images(blank or empty display) (COMPLETE)
+- Click event to turn over the Div Images (COMPLETE)
+- Check for match on click (COMPLETE)
+- Images stay open if checked (COMPLETE)
+- Timeout Pictures so that they turn back around if not matched (COMPLETE)
+- Game Points Counter (COMPLETE)
+- Lay out Javascript game logic (COMPLETE)
+- Disable double click on images (COMPLETE)
+
 
 ## Stretch Goals:
-- Styling the game board & background
-- Game Add On: Text box that pops up where you can enter the name of the img for more points
+- Styling the game board & background (COMPLETE)
+- Game Add On: Modal Text box that pops up where you can enter the name of the img for more points
 - Timer with game Add On
 - Leaderboard
 - Easy/Medium/Hard Mode
@@ -32,6 +36,8 @@ This will be Hip Hop themed memory-based matching card game with a points system
  ## Roadblocks:
  - Functions that ensure game logic (matching of images)
  - Randomizing the placement of the images
+ - Storing of Images and random assignment to a div
+ - Attributing an identifier to both divs at clicked target and the images behind the div
  
  ## Game Planning and Overcoming Roadblocks:
  - Setting up the game board with HTML and CSS so that the basis of the game is laid out

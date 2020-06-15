@@ -134,6 +134,24 @@ body {
     to {top: 0; opacity: 1}
   }
 
-.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+
+
+
+
+  .flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
 	transform: rotateY(180deg);
+}
+
+.vertical.flip-container {
+	position: relative;
+}
+
+.vertical .back {
+	transform: rotateX(180deg);
+}
+.vertical.flip-container .flipper {
+	transform-origin: 100% 213.5px; /* half of height */
+}
+.vertical.flip-container:hover .flipper {
+	transform: rotateX(-180deg);
 }
