@@ -1,26 +1,19 @@
 //-----------------------------> Declaring DOM Refs and Consts <----------------
 
 let links = 
-    ['Images/Drake.jpg',
-    'Images/Drake.jpg',
-    'Images/Kanye.jpg',
-    'Images/Kanye.jpg',
-    'Images/Tupac.png',
-    'Images/Tupac.png',
-    'Images/Tyler.jpg',
-    'Images/Tyler.jpg']
+['Images/Drake.jpg',
+'Images/Drake.jpg',
+'Images/Kanye.jpg',
+'Images/Kanye.jpg',
+'Images/Tupac.png',
+'Images/Tupac.png',
+'Images/Tyler.jpg',
+'Images/Tyler.jpg']
 
 const player = {
     points: 0,
     pick: null,
     choices: []
-}
-   
-let modalMatch = {
-    'Images/Tupac.png': 'Tupac',
-    'Images/Drake.jpg': 'Drake',
-    'Images/Kanye.jpg': 'Kanye West',
-    'Images/Tyler.jpg': 'Tyler, the Creator'
 }
 
 
@@ -59,16 +52,7 @@ function pointsDisplay() {
    document.getElementById('points').innerHTML = pointsPlacement;
 }
 
-// function checkInputMatch(MatchURL) {
-    
-//     for (matchURL in modalMatch) {
-//         if (submitBtn.innerHTML === matchURL) {
-//             player.points++
-//         }
-//     }
-// }
-
-function modalAdd () {
+function modalAdd (e) {
     modal.style.display = "block";
     var span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
@@ -79,20 +63,14 @@ function modalAdd () {
           modal.style.display = "none";
         }
     }
-    // checkInputMatch(MatchURL)// pass url in as a paramater in the function
 }
 
-function flipCard (e) {
-     e.target.src = imageStorage[parseInt(e.target.id)];
-    
-     flippedCardsArr.push(e.target.src)
-     this.classList.add("flippedClass")
-
-     if (flippedCardsArr.length === 2) { 
+function matchCard () {
+    if (flippedCardsArr.length === 2) { 
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
                     player.points++
-                    // modalAdd()
+                    modalAdd()
                 pointsDisplay();
             } else {
                 let restoreImages = document.getElementsByClassName('flippedClass');
@@ -107,8 +85,16 @@ function flipCard (e) {
             flippedCardsArr = [];
         }
         setTimeout(delayFlip, 2500);
-        
     }
+}
+
+function flipCard (e) {
+    e.target.src = imageStorage[parseInt(e.target.id)];
+
+    flippedCardsArr.push(e.target.src);
+    this.classList.add("flippedClass");
+
+    matchCard()
 }
 
 function assignEvents () {
@@ -125,5 +111,3 @@ function gameStart(e) {
 }
 
 startBtn.addEventListener('click', gameStart);
-
-
