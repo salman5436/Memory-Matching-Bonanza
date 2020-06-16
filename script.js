@@ -1,25 +1,31 @@
 //-----------------------------> Declaring DOM Refs and Consts <----------------
 
 let links = 
-['Images/Drake.jpg',
-'Images/Drake.jpg',
-'Images/Kanye.jpg',
-'Images/Kanye.jpg',
-'Images/Tupac.png',
-'Images/Tupac.png',
-'Images/Tyler.jpg',
-'Images/Tyler.jpg']
+    ['Images/Drake.jpg',
+    'Images/Drake.jpg',
+    'Images/Kanye.jpg',
+    'Images/Kanye.jpg',
+    'Images/Tupac.png',
+    'Images/Tupac.png',
+    'Images/Tyler.jpg',
+    'Images/Tyler.jpg']
 
 const player = {
     points: 0,
     pick: null,
     choices: []
 }
+   
+let modalMatch = {
+    'Images/Tupac.png': 'Tupac',
+    'Images/Drake.jpg': 'Drake',
+    'Images/Kanye.jpg': 'Kanye West',
+    'Images/Tyler.jpg': 'Tyler, the Creator'
+}
 
 
 let allCards = document.getElementsByClassName('card');
 let startBtn = document.getElementById('start-button');
-let topLeftCard = document.getElementById('00');
 
 var modal = document.getElementById("myModal");
 
@@ -53,7 +59,16 @@ function pointsDisplay() {
    document.getElementById('points').innerHTML = pointsPlacement;
 }
 
-function modalAdd (e) {
+// function checkInputMatch(MatchURL) {
+    
+//     for (matchURL in modalMatch) {
+//         if (submitBtn.innerHTML === matchURL) {
+//             player.points++
+//         }
+//     }
+// }
+
+function modalAdd () {
     modal.style.display = "block";
     var span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
@@ -64,14 +79,12 @@ function modalAdd (e) {
           modal.style.display = "none";
         }
     }
-    //BUG: Need a system for match between value of modal text pop up and images 
+    // checkInputMatch(MatchURL)// pass url in as a paramater in the function
 }
 
 function flipCard (e) {
      e.target.src = imageStorage[parseInt(e.target.id)];
-    //BUG: Flip Animation is not functional
-    //  document.getElementsByClassName("flip").classList.toggle("flip")
-
+    
      flippedCardsArr.push(e.target.src)
      this.classList.add("flippedClass")
 
@@ -79,12 +92,10 @@ function flipCard (e) {
         function delayFlip() {
             if(flippedCardsArr[0] === flippedCardsArr[1]) {
                     player.points++
-                    modalAdd()
+                    // modalAdd()
                 pointsDisplay();
-                console.log(player.points);
             } else {
                 let restoreImages = document.getElementsByClassName('flippedClass');
-                console.log(restoreImages);
                 Array.from(restoreImages).forEach(element => {
                     element.children[0].src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRaZPqedlhttgZUQTvRJuIz1lFhs1d8uetmL1S8A6w5F9ToSt_h&usqp=CAU"
                 })
@@ -114,3 +125,5 @@ function gameStart(e) {
 }
 
 startBtn.addEventListener('click', gameStart);
+
+
